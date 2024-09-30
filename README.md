@@ -15,7 +15,7 @@ This project involves developing a generative chatbot using **GPT-2** to handle 
 - **Adaptability**: Future improvements planned for increasing coherence, latency optimization, and expanding the knowledge domain.
 
 ## Dataset
-The chatbot will be trained on the **Cornell Movie Dialogues Corpus**, which contains:
+The chatbot will be trained on the **[Cornell Movie Dialogues Corpus](https://www.kaggle.com/datasets/rajathmc/cornell-moviedialog-corpus)**, which contains:
 - **220,000 conversational exchanges** between **10,000+ movie characters**.
 - Conversations from over **600 movies**, providing a wide range of contexts, informal speech, and different styles of interaction.
 
@@ -39,18 +39,17 @@ To run this project locally, you need to have Python installed. Follow these ste
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/yourusername/AAI-520-final-project-chatbot.git
-    cd AAI-520-final-project-chatbot
+
     ```
 
 2. Install the required libraries:
     ```sh
-    pip install -r requirements.txt
+   
     ```
 
 3. Run the chatbot interface using **Streamlit**:
     ```sh
-    streamlit run chatbot_app.py
+
     ```
 
 ## Usage
@@ -63,12 +62,10 @@ To run this project locally, you need to have Python installed. Follow these ste
 3. **Week 3**: Web Interface Development, Testing, and Deployment.
 
 ## Future Improvements
-- **Latency Optimization**: Work on reducing response generation time.
-- **Scalability**: Adapt the chatbot to handle larger conversations and improve coherency.
-- **Knowledge Expansion**: Integrate more data sources for improved diversity and adaptability.
+
 
 ## Contributing
-Currently, this is an individual project. Contributions are welcome for future improvements after the initial development phase.
+Contributions are welcome for future improvements after the initial development phase.
 
 ## License
 This project is licensed under the **MIT License**. See the `LICENSE` file for more information.
@@ -78,6 +75,3 @@ This project is licensed under the **MIT License**. See the `LICENSE` file for m
 - **Hugging Face** for their excellent **Transformers** library.
 - The **Cornell Movie Dialogues Corpus** for the dataset.
 
----
-
-Feel free to adapt the structure further to meet any additional requirements you have!
