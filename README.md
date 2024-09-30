@@ -3,6 +3,10 @@
 ## Project Overview
 This project involves developing a generative chatbot using **GPT-2** to handle multi-turn conversations and adapt to different user intents. The chatbot will be trained on the **Cornell Movie Dialogues Corpus**, which provides diverse and engaging conversational data. The final output will be a user-friendly web interface where users can interact with the chatbot.
 
+This project is a part of the **Natural Language Processing and GenAI** (AAI-520) course in [the Applied Artificial Intelligence Master Program](https://onlinedegrees.sandiego.edu/masters-applied-artificial-intelligence/) at [the University of San Diego (USD)](https://www.sandiego.edu/). 
+
+-- **Project Status: Ongoing**
+
 ## Objectives
 - Train a generative chatbot capable of:
   - Understanding and maintaining context across multiple turns.
@@ -68,7 +72,7 @@ To run this project locally, you need to have Python installed. Follow these ste
 Contributions are welcome for future improvements after the initial development phase.
 
 ## License
-This project is licensed under the **MIT License**. See the `LICENSE` file for more information.
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for more details.
 
 ## Acknowledgements
 - **OpenAI** for providing **GPT-2**.
