@@ -1,11 +1,11 @@
 # Generative Chatbot for Multi-Turn Conversations
 
-## Project Overview
-This project involves developing a generative chatbot using **GPT-2** to handle multi-turn conversations and adapt to different user intents. The chatbot will be trained on the **Cornell Movie Dialogues Corpus**, which provides diverse and engaging conversational data. The final output will be a user-friendly web interface where users can interact with the chatbot.
-
 This project is a part of the **Natural Language Processing and GenAI** (AAI-520) course in [the Applied Artificial Intelligence Master Program](https://onlinedegrees.sandiego.edu/masters-applied-artificial-intelligence/) at [the University of San Diego (USD)](https://www.sandiego.edu/). 
 
 -- **Project Status: Ongoing**
+
+## Project Overview
+This project involves developing a generative chatbot using **GPT-2** to handle multi-turn conversations and adapt to different user intents. The chatbot will be trained on the **Cornell Movie Dialogues Corpus**, which provides diverse and engaging conversational data. The final output will be a user-friendly web interface where users can interact with the chatbot.
 
 ## Objectives
 - Train a generative chatbot capable of:
