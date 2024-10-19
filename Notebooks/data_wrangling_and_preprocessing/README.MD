@@ -4,6 +4,10 @@
 * **Course:** Natural Language Processing and GenAI (AAI-520-04) / University Of San Diego
 * **Semester:** Winter 2024
 
+<center>
+    <img src="https://github.com/akthammomani/AI_powered_heart_disease_risk_assessment_app/assets/67468718/2cab2215-ce7f-4951-a43a-02b88a5b9fa9" alt="wrnagling">
+</center>
+
 
 ## **Dataset**
 
@@ -35,85 +39,40 @@ The Cornell Movie Dialogues Dataset is particularly suitable for training genera
 
 By using this dataset, we can build a chatbot that is capable of handling casual conversations, answering questions, and maintaining coherent multi-turn dialogue, making it ideal for applications like customer support, virtual assistants, and entertainment bots.
 
+## **Data Wrangling & Preprocessing**
 
-## **Importing Dataset**
+In this notebook, we perform the critical steps of data wrangling and preprocessing to prepare the **Cornell Movie Dialogues Dataset** for training a conversational chatbot. This dataset was imported from **Kaggle**, and it contains dialogues from a variety of movies, offering a rich set of conversation pairs for building a chatbot capable of engaging in casual conversations.
 
-```python
-# Load movie lines and conversations into DataFrames:
-def load_data_to_dataframe():
-    # Load movie lines:
-    lines_data = []
-    with open("movie_lines.txt", encoding='utf-8', errors='ignore') as file:
-        for line in file:
-            line_parts = line.split(" +++$+++ ")
-            if len(line_parts) == 5:
-                line_id, character_id, movie_id, character_name, text = line_parts
-                lines_data.append([line_id, character_id, movie_id, character_name, text.strip()])
+**Data Import:**
 
-    # Create DataFrame for lines:
-    lines_df = pd.DataFrame(lines_data, columns=["line_id", "character_id", "movie_id", "character_name", "text"])
+The dataset was sourced from **Kaggle** and consists of multiple text files including:
 
-    # Load movie conversations:
-    conversations_data = []
-    with open("movie_conversations.txt", encoding='utf-8', errors='ignore') as file:
-        for line in file:
-            line_parts = line.split(" +++$+++ ")
-            if len(line_parts) == 4:
-                character_ids = line_parts[0:2]
-                movie_id = line_parts[2]
-                conversation_ids = eval(line_parts[3])  # List of line IDs
-                conversations_data.append([character_ids, movie_id, conversation_ids])
+* `movie_lines.txt:` Contains individual lines of dialogue along with metadata.
+* `movie_conversations.txt:` Provides conversation groupings, linking individual lines to create multi-turn dialogues.
 
-    # Create DataFrame for conversations:
-    conversations_df = pd.DataFrame(conversations_data, columns=["character_ids", "movie_id", "conversation_ids"])
+We imported these files into Python and structured the data for efficient processing. The data was then loaded into a Pandas DataFrame for easier manipulation.
 
-    # Load movie metadata:
-    movie_metadata = []
-    with open("movie_titles_metadata.txt", encoding='utf-8', errors='ignore') as file:
-        for line in file:
-            line_parts = line.split(" +++$+++ ")
-            if len(line_parts) >= 5:
-                movie_id, movie_title, movie_year, movie_rating, movie_genres = line_parts[:5]
-                movie_metadata.append([movie_id.strip(), movie_title.strip(), movie_year.strip(), movie_rating.strip(), movie_genres.strip()])
+**Data Cleaning and Column Selection:**
 
-    # Create DataFrame for movies:
-    movies_df = pd.DataFrame(movie_metadata, columns=["movie_id", "title", "year", "rating", "genres"])
+Since the focus of our chatbot is **casual conversation** rather than movie-specific trivia or character emulation, we discarded irrelevant columns such as:
 
-    return lines_df, conversations_df, movies_df
+* **Movie Titles:** Not essential for casual conversations.
+* **Character Names:** Not required for general chit-chat.
+* **Years:** Historical context is unnecessary in a conversational chatbot.
 
-# Display complete data with conversation IDs, turn IDs, and progress tracking:
-def display_conversations_df(conversations_df, lines_df, movies_df):
-    conversation_list = []
-    
-    # Loop through the conversations and assign conversation IDs:
-    for convo_id, convo_row in tqdm(enumerate(conversations_df.itertuples(), start=1), total=len(conversations_df), desc="Processing Conversations"):
-        convo_lines = []
-        for turn_id, line_id in enumerate(convo_row.conversation_ids, start=1):
-            # Get the line text from the lines_df
-            line_data = lines_df[lines_df['line_id'] == line_id]
-            if not line_data.empty:
-                text = line_data.iloc[0]['text']
-                character_name = line_data.iloc[0]['character_name']
-                movie_id = line_data.iloc[0]['movie_id']
+After removing these unnecessary columns, we focused on the core **dialogue text**, which will serve as the foundation for training the chatbot.
 
-                # Get movie title and year from movies_df
-                movie_data = movies_df[movies_df['movie_id'] == movie_id]
-                if not movie_data.empty:
-                    movie_title = movie_data.iloc[0]['title']
-                    movie_year = movie_data.iloc[0]['year']
-                else:
-                    movie_title = "Unknown"
-                    movie_year = "Unknown"
-                
-                # Append conversation with conversation ID, turn ID, and text:
-                convo_lines.append([convo_id, turn_id, movie_title, movie_year, character_name, text])
-        
-        # Add all turns of the conversation to the list:
-        conversation_list.extend(convo_lines)
+**Preprocessing Pipeline:**
 
-    # Create DataFrame for complete conversations with conversation and turn IDs:
-    full_conversations_df = pd.DataFrame(conversation_list, columns=["Conversation ID", "Turn ID", "Movie Title", "Year", "Character", "Text"])
-    return full_conversations_df
-```
+The preprocessing pipeline is designed to clean and standardize the conversational data for input into the model. The steps include:
 
+* **Expanding Contractions:** Common English contractions (e.g., can't to cannot) were expanded to ensure the text is uniform.
+* **Removing Non-Dialogue Elements:** Stage directions and non-verbal actions, such as descriptions in parentheses or square brackets, were removed to keep only the spoken parts.
+* **Preserving Proper Nouns:** Using natural language processing (NLP), we ensured that proper nouns such as movie titles, places, and names were preserved in their original form, while the rest of the text was lowercased.
+* **Normalizing Numbers:** Numbers and years were normalized by replacing them with tokens such as <NUMBER> and <YEAR>.
+* **Truncating Long Utterances:** Very long dialogue lines were truncated to a maximum word length to maintain coherence.
+* **Final Cleanup:** The text was cleaned of any remaining unwanted characters and extra spaces.
+* 
+Each step in this pipeline helps standardize the input text and removes noise that could negatively impact the chatbot's performance. After applying the cleaning pipeline, the data was stored in a **cleaned DataFrame** for subsequent processing and model training.
 
+By applying this preprocessing pipeline, we ensure the text is well-structured, uniform, and ready for the next steps in building our chatbot.
