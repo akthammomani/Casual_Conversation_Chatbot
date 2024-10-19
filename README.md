@@ -5,7 +5,7 @@ This project is a part of the **Natural Language Processing and GenAI** (AAI-520
 -- **Project Status: Ongoing**
 
 ## Project Overview
-This project involves developing a generative chatbot using **GPT-2** to handle multi-turn conversations and adapt to different user intents. The chatbot will be trained on the **Cornell Movie Dialogues Corpus**, which provides diverse and engaging conversational data. The final output will be a user-friendly web interface where users can interact with the chatbot.
+This project involves developing a generative chatbot using **LSTM** to handle multi-turn conversations and adapt to different user intents. The chatbot will be trained on the **Cornell Movie Dialogues Corpus**, which provides diverse and engaging conversational data. The final output will be a user-friendly web interface where users can interact with the chatbot.
 
 ## Objectives
 - Train a generative chatbot capable of:
@@ -24,13 +24,38 @@ The chatbot will be trained on the **[Cornell Movie Dialogues Corpus](https://ww
 - Conversations from over **600 movies**, providing a wide range of contexts, informal speech, and different styles of interaction.
 
 ## Model and Architecture
-- Starting with **GPT-2 (124M parameters)** from Hugging Face's Transformers library.
-- Adjustments will be made to accommodate limited hardware (16 GB RAM), such as using:
-  - **Smaller batch sizes**.
-  - **Gradient accumulation**.
-  - **Mixed precision training**.
 
-- **Model Flexibility**: Depending on the challenges faced, other models may be considered to better suit the available resources.
+I experimented with three models: **GPT-2**, **T5-small**, and **LSTM**. Each model was chosen for its strengths in handling natural language processing tasks, but adjustments had to be made based on hardware limitations (16 GB RAM).
+
+**Initial Attempts:**
+
+- **GPT-2** and **T5-small** from Hugging Face's Transformers library were the initial choices for their ability to handle complex conversational tasks. However, these models required significant computational power, which posed challenges on the available hardware.
+
+- To address these challenges, several techniques were used:
+  - **PEFT LoRA (Parameter Efficient Fine-Tuning)**: Applied to fine-tune GPT-2 and T5-small with fewer parameters, reducing memory usage and making training more efficient.
+  - **Smaller Sampled Dataset**: The dataset was down-sampled to fit within the hardware constraints while still being representative enough for the task.
+  - **AdamW Optimizer**: Used to improve convergence with weight decay, enhancing training stability.
+  - **WandB (Weights and Biases)**: Integrated to monitor model performance in real-time, helping track experiments and hyperparameter tuning.
+
+- Despite these efforts, the performance of **GPT-2** and **T5-small** was limited by the available hardware, leading to long training times and suboptimal results.
+
+**Final Model Selection: LSTM Architecture**
+
+After facing these challenges, I ultimately selected an **LSTM (Long Short-Term Memory)** network for its efficiency and suitability given the hardware constraints. The LSTM model allowed for faster training while maintaining competitive performance for multi-turn conversations.
+
+**LSTM Model Architecture:**
+
+- **Embedding Layer**: Transforms the input tokens into dense vector representations.
+- **Bidirectional LSTM Layer**: A bidirectional LSTM with 128 units, allowing the model to capture information from both past and future context.
+- **Dropout Layers**: Used for regularization to prevent overfitting, with a dropout rate of 0.3.
+- **Dense Layer**: A 64-unit fully connected layer with ReLU activation to introduce non-linearity.
+- **Output Layer**: A softmax output layer with a size equal to the vocabulary, predicting the next word in the conversation sequence.
+- **Data Generator**: A custom **DataGenerator** was implemented to handle large datasets efficiently by loading and processing the data in batches during training, making the model fit within hardware constraints.
+
+**Model Flexibility**
+
+Throughout the process, model flexibility remained a key consideration, with adjustments made as needed to fit the available resources.
+
 
 ## Challenges and Adaptation Strategy
 - **Limited Resources**: The project will be developed on a machine with **16 GB RAM**, which requires careful optimization to ensure successful training and deployment.
