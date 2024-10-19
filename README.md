@@ -100,7 +100,8 @@ Contributions are welcome for future improvements after the initial development 
 This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for more details.
 
 ## Acknowledgements
-- **OpenAI** for providing **GPT-2**.
-- **Hugging Face** for their excellent **Transformers** library.
-- The **Cornell Movie Dialogues Corpus** for the dataset.
+* A special thanks to **Professor Andrew Van Benschoten, Ph.D.**, for his invaluable guidance and support throughout this class/project.
+* The **TensorFlow and PyTorch** communities for their work on deep learning frameworks, including the implementation of LSTM models.
+* **Streamlit** for offering an easy-to-use platform to deploy this project as an interactive web app.
+* **The Cornell Movie Dialogues Corpus** for providing the dataset that made this project possible.
 
