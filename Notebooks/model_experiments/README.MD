@@ -1,7 +1,7 @@
 
 # Model and Architecture
 
-I experimented with three models: **GPT-2** and **T5-small**. Each model was chosen for its strengths in handling natural language processing tasks, but adjustments had to be made based on hardware limitations (16 GB RAM).
+I experimented with two models: **GPT-2** and **T5-small**. Each model was chosen for its strengths in handling natural language processing tasks, but adjustments had to be made based on hardware limitations (16 GB RAM).
 
 **Initial Attempts:**
 
