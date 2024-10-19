@@ -17,9 +17,9 @@ For this project, we selected **LSTM (Long Short-Term Memory)** as the final arc
 
 Given these advantages, LSTM was chosen as the final architecture for our model, enabling the chatbot to handle conversational context and provide coherent multi-turn responses.
 
-## Data Preparation
+## Data Preparation - Assessing Conversation Length
 
-**Assessing Conversation Length**: Understanding the length of the conversations in our dataset was crucial for designing the LSTM architecture. We assessed the distribution of conversation lengths to ensure that the model's input size was appropriate.
+Understanding the length of the conversations in our dataset was crucial for designing the LSTM architecture. We assessed the distribution of conversation lengths to ensure that the model's input size was appropriate.
 
 Here’s a visual representation of the distribution of conversation lengths:
 
