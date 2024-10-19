@@ -83,7 +83,7 @@ To run this project locally, you need to have Python installed. Follow these ste
 
 ## Usage
 - Run the **Streamlit app** to interact with the chatbot.
-- Users can enter conversational inputs and receive responses from the GPT-2 model in real-time.
+- Users can enter conversational inputs and receive responses from the LSTM model in real-time.
 
 ## Project Milestones
 1. **Week 1**: Research and Dataset Preprocessing.
