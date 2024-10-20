@@ -91,9 +91,47 @@ class DataGenerator(tf.keras.utils.Sequence):
 This DataGenerator ensured that training could be carried out even with memory constraints, making the process more scalable and efficient.
 
 
-## Conclusion
+## LSTM LOSS & Accuracy
 
-By selecting LSTM as the final architecture, adjusting for conversation length, and using a DataGenerator to handle the large dataset efficiently, the model was able to learn effectively despite hardware limitations. The use of LSTM provided the necessary balance between model complexity and performance, making it ideal for our chit-chat bot, capable of maintaining conversational context over multiple turns.
+![1st_lstm](https://github.com/user-attachments/assets/573a0210-77a8-4b30-8c0e-8676b13172a7)
+
+**Summary Highlights:**
+
+* **Training Accuracy:**
+
+   * The training accuracy started at 62.50% in the first epoch and steadily increased to 67.83% by epoch 14.
+   * This demonstrates that the model was learning well from the data and consistently improving its predictions.
+
+* **Validation Accuracy:**
+
+   * The validation accuracy started at 63.00% and increased to 67.13% by epoch 14.
+   * The gap between training accuracy and validation accuracy remained small, indicating that the model generalized well to unseen data and did not overfit.
+
+* **Training Loss:**
+
+   * The training loss started at 3.0472 and gradually decreased to 2.0870 by epoch 14.
+   * This decrease in training loss indicates that the model's predictions became increasingly aligned with the true values during training.
+
+* **Validation Loss:**
+
+   * The validation loss started at 2.7123 and decreased to 2.2867 by epoch 14.
+   * A consistent decrease in validation loss suggests that the model was improving in its ability to generalize to the validation set, although the rate of improvement slowed down after a few epochs.
+
+* **Early Stopping:**
+
+   * Early stopping was employed with patience=3, which means training would stop if the validation loss didn’t improve after 3 consecutive epochs. This helps avoid overfitting.
+   * The model was allowed to train for 20 epochs, but training was effectively stopped by epoch 14 as the validation loss began to stabilize and no longer showed significant improvements.
+
+* **Convergence:**
+
+   * Both the training and validation accuracy continued to rise, while training and validation losses dropped and then began to stabilize.
+   * The convergence point around epoch 14 suggests that the model reached an optimal balance between fitting the training data and generalizing to unseen data.
+
+* **Conclusion:**
+   * The model performed well, achieving 67.83% training accuracy and 67.13% validation accuracy by epoch 14.
+   * The small gap between training and validation metrics indicates strong generalization capabilities.
+   * The early stopping mechanism worked effectively, stopping training before overfitting could occur.
+   * Total time required to train for 14 epochs is `46 hours, 20 minutes, and 43 seconds`.
 
 ## Future Considerations
 
