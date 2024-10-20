@@ -1,4 +1,4 @@
-# **Final Model: LSTM for Chit-Chat Bot**
+# **Initial Model: LSTM for Chit-Chat Bot**
 
 ## Introduction: 
 For this project, we selected **LSTM (Long Short-Term Memory)** as the final architecture for building our chatbot. LSTM is particularly well-suited for handling sequential data, such as conversations, due to its ability to retain information over long sequences and handle dependencies across time steps. This makes it an excellent choice for our chit-chat bot, where maintaining conversational context is crucial across multiple turns.
