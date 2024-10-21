@@ -22,7 +22,7 @@ Given these advantages, LSTM was chosen as the final architecture for our model,
 
 ### Filtering Conversations by Length
 
-o enhance data quality and ensure that our model trains on meaningful interactions, we filtered the conversations based on their length. We kept only those conversations that have more than `2 words` and less than `24 words`. This step removes extremely short exchanges that lack context and excessively long conversations that may introduce noise.
+To enhance data quality and ensure that our model trains on meaningful interactions, we filtered the conversations based on their length. We kept only those conversations that have more than `2 words` and less than `24 words`. This step removes extremely short exchanges that lack context and excessively long conversations that may introduce noise.
 
 ### Removing Rare Words
 
