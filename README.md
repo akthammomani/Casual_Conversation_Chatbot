@@ -43,14 +43,20 @@ I experimented with three models: **GPT-2**, **T5-small**, and **LSTM**. Each mo
 
 After facing these challenges, I ultimately selected an **LSTM (Long Short-Term Memory)** network for its efficiency and suitability given the hardware constraints. The LSTM model allowed for faster training while maintaining competitive performance for multi-turn conversations.
 
-**LSTM Model Architecture:**
+**LSTM Model with Attention Mechanism and GloVe:**
 
-- **Embedding Layer**: Transforms the input tokens into dense vector representations.
-- **Bidirectional LSTM Layer**: A bidirectional LSTM with 128 units, allowing the model to capture information from both past and future context.
+- **Embedding Layer**: Transforms input words (represented as integers) into `300-dimensional dense vectors` using `pre-trained GloVe embeddings`.
+- **Bidirectional LSTM Layer**: A bidirectional LSTM layer with `256 units` is used to capture context from both the forward and backward directions of the input sequence
+- **Attention Layer**: An Attention Mechanism is introduced to allow the model to focus on the most relevant parts of the input sequence, improving its ability to understand the nuances of conversation
+- **Second LSTM Layer**: This additional LSTM layer, with `128 units`, further processes the output from the attention layer. Another `30% dropout` is applied for regularization, followed by batch normalization to stabilize the training process.
 - **Dropout Layers**: Used for regularization to prevent overfitting, with a dropout rate of 0.3.
+- **Model Compilation**: The model is compiled with the Adam optimizer and sparse categorical crossentropy as the loss function, suitable for multi-class classification tasks like next-word prediction. Gradient clipping (with clipnorm=1.0) is applied to prevent exploding gradients and ensure stable training. Accuracy is used as the evaluation metric.
 - **Dense Layer**: A 64-unit fully connected layer with ReLU activation to introduce non-linearity.
 - **Output Layer**: A softmax output layer with a size equal to the vocabulary, predicting the next word in the conversation sequence.
 - **Data Generator**: A custom **DataGenerator** was implemented to handle large datasets efficiently by loading and processing the data in batches during training, making the model fit within hardware constraints.
+- **ReduceLROnPlateau**: To ensure efficient training, ReduceLROnPlateau is applied to adjust the learning rate when the validation loss plateaus. When the validation loss stops improving for 3 consecutive epochs, the learning rate is reduced by a factor of 0.2 (i.e., it will decrease by 20%). This allows the model to fine-tune and converge better towards optimal solutions. The minimum learning rate is set to 0.0001.
+- **Early Stopping**: To prevent overfitting, early stopping is applied, monitoring validation loss. If the validation loss doesn’t improve for 3 consecutive epochs, training stops, and the best model weights are restored.
+  
 
 **Model Flexibility**
 
