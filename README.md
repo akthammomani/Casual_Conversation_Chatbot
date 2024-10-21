@@ -45,10 +45,10 @@ After facing these challenges, I ultimately selected an **LSTM (Long Short-Term 
 
 **LSTM Model with Attention Mechanism and GloVe:**
 
-- **Embedding Layer**: Transforms input words (represented as integers) into `300-dimensional dense vectors` using `pre-trained GloVe embeddings`.
-- **Bidirectional LSTM Layer**: A bidirectional LSTM layer with `256 units` is used to capture context from both the forward and backward directions of the input sequence
+- **Embedding Layer**: Transforms input words (represented as integers) into 300-dimensional dense vectors using pre-trained GloVe embeddings.
+- **Bidirectional LSTM Layer**: A bidirectional LSTM layer with 256 units is used to capture context from both the forward and backward directions of the input sequence
 - **Attention Layer**: An Attention Mechanism is introduced to allow the model to focus on the most relevant parts of the input sequence, improving its ability to understand the nuances of conversation
-- **Second LSTM Layer**: This additional LSTM layer, with `128 units`, further processes the output from the attention layer. Another `30% dropout` is applied for regularization, followed by batch normalization to stabilize the training process.
+- **Second LSTM Layer**: This additional LSTM layer, with 128 units, further processes the output from the attention layer. Another 30% dropout is applied for regularization, followed by batch normalization to stabilize the training process.
 - **Dropout Layers**: Used for regularization to prevent overfitting, with a dropout rate of 0.3.
 - **Model Compilation**: The model is compiled with the Adam optimizer and sparse categorical crossentropy as the loss function, suitable for multi-class classification tasks like next-word prediction. Gradient clipping (with clipnorm=1.0) is applied to prevent exploding gradients and ensure stable training. Accuracy is used as the evaluation metric.
 - **Dense Layer**: A 64-unit fully connected layer with ReLU activation to introduce non-linearity.
@@ -57,44 +57,6 @@ After facing these challenges, I ultimately selected an **LSTM (Long Short-Term 
 - **ReduceLROnPlateau**: To ensure efficient training, ReduceLROnPlateau is applied to adjust the learning rate when the validation loss plateaus. When the validation loss stops improving for 3 consecutive epochs, the learning rate is reduced by a factor of 0.2 (i.e., it will decrease by 20%). This allows the model to fine-tune and converge better towards optimal solutions. The minimum learning rate is set to 0.0001.
 - **Early Stopping**: To prevent overfitting, early stopping is applied, monitoring validation loss. If the validation loss doesn’t improve for 3 consecutive epochs, training stops, and the best model weights are restored.
   
-
-**Model Flexibility**
-
-Throughout the process, model flexibility remained a key consideration, with adjustments made as needed to fit the available resources.
-
-
-## Challenges and Adaptation Strategy
-- **Limited Resources**: The project will be developed on a machine with **16 GB RAM**, which requires careful optimization to ensure successful training and deployment.
-- Strategies include:
-  - Using **smaller batch sizes** and **gradient accumulation** to fit model training into limited memory.
-  - Keeping **options open** to switch to a lighter model if needed.
-
-## Installation
-To run this project locally, you need to have Python installed. Follow these steps:
-
-1. Clone the repository:
-    ```sh
-
-    ```
-
-2. Install the required libraries:
-    ```sh
-   
-    ```
-
-3. Run the chatbot interface using **Streamlit**:
-    ```sh
-
-    ```
-
-## Usage
-- Run the **Streamlit app** to interact with the chatbot.
-- Users can enter conversational inputs and receive responses from the LSTM model in real-time.
-
-## Project Milestones
-1. **Week 1**: Research and Dataset Preprocessing.
-2. **Week 2**: Model Training and Initial Testing.
-3. **Week 3**: Web Interface Development, Testing, and Deployment.
 
 ## Future Improvements
 
