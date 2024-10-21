@@ -112,45 +112,46 @@ This DataGenerator ensured that training could be carried out even with memory c
 
 ## LSTM LOSS & Accuracy
 
-![1st_lstm](https://github.com/user-attachments/assets/573a0210-77a8-4b30-8c0e-8676b13172a7)
+![final_lstm](https://github.com/user-attachments/assets/b0621778-0a6b-48ce-8025-b8687420fa70)
 
 **Summary Highlights:**
 
-* **Training Accuracy:**
+* **Training Accuracy:** Started at `58.81%` in the first epoch and increased steadily, reaching `62.15%` by the fifth epoch. This shows that the model is learning and improving its predictions on the training data.
 
-   * The training accuracy started at 62.50% in the first epoch and steadily increased to 67.83% by epoch 14.
-   * This demonstrates that the model was learning well from the data and consistently improving its predictions.
+* **Validation Accuracy:** Although the training accuracy improved, the validation accuracy remained stable, fluctuating between `60.10`% and `60.57%`. This suggests that while the model learns the training data, its ability to generalize to unseen data is limited.
 
-* **Validation Accuracy:**
+* **Training Loss:** Decreased from `2.5829` to `2.3513`, indicating that the model's predictions on the training data are becoming more accurate with each epoch.
 
-   * The validation accuracy started at 63.00% and increased to 67.13% by epoch 14.
-   * The gap between training accuracy and validation accuracy remained small, indicating that the model generalized well to unseen data and did not overfit.
+* **Validation Loss:** Remained fairly stable, starting at `2.3555` and ending at `2.4076`. This suggests that the model may be struggling to improve its performance on the validation set, potentially indicating overfitting or insufficient capacity to generalize.
 
-* **Training Loss:**
+* **Accuracy Gap:** A small gap between the training and validation accuracies (~`1.58%`), which could indicate mild overfitting. The model performs slightly better on the training set than on the validation set.
 
-   * The training loss started at 3.0472 and gradually decreased to 2.0870 by epoch 14.
-   * This decrease in training loss indicates that the model's predictions became increasingly aligned with the true values during training.
+**Key Observations:**
 
-* **Validation Loss:**
+* The **training accuracy** is improving, but the validation accuracy is relatively stable, suggesting that the model may not be learning new information beyond a certain point.
+* The **training loss** is reducing steadily, but the validation loss is not decreasing at the same rate, which could indicate the model's limitations in generalizing well to unseen data.
+* **Early Stopping** is a good safeguard here, as the model might not benefit significantly from further training beyond a certain point, as evidenced by the flattening validation performance.
 
-   * The validation loss started at 2.7123 and decreased to 2.2867 by epoch 14.
-   * A consistent decrease in validation loss suggests that the model was improving in its ability to generalize to the validation set, although the rate of improvement slowed down after a few epochs.
+## Human-based Evaluation
 
-* **Early Stopping:**
+Based on the human evaluation of the chit-chat bot, here are the key highlights:
 
-   * Early stopping was employed with patience=3, which means training would stop if the validation loss didn’t improve after 3 consecutive epochs. This helps avoid overfitting.
-   * The model was allowed to train for 20 epochs, but training was effectively stopped by epoch 14 as the validation loss began to stabilize and no longer showed significant improvements.
+* **Limited Coherency:** The bot struggles to generate meaningful or coherent responses. For instance, when asked common questions like "how are you?" or "what's your name?" it replies with non-relevant terms such as "not" or "the."
 
-* **Convergence:**
+* **Repetitive Responses:** The bot tends to provide similar responses like "start" or "the," which suggests it may not fully understand the context of the conversation or have a rich enough response generation capability.
 
-   * Both the training and validation accuracy continued to rise, while training and validation losses dropped and then began to stabilize.
-   * The convergence point around epoch 14 suggests that the model reached an optimal balance between fitting the training data and generalizing to unseen data.
+* **Lack of Contextual Awareness:** It appears that the bot is not capturing the context of the dialogue or understanding follow-up questions. For example, it doesn’t respond well to prompts like "give me a joke" or "best comedy movie?"
 
-* **Conclusion:**
-   * The model performed well, achieving 67.83% training accuracy and 67.13% validation accuracy by epoch 14.
-   * The small gap between training and validation metrics indicates strong generalization capabilities.
-   * The early stopping mechanism worked effectively, stopping training before overfitting could occur.
-   * Total time required to train for 14 epochs is `46 hours, 20 minutes, and 43 seconds`.
+* **Possible Over-reliance on Specific Tokens:** The bot's responses seem heavily influenced by specific tokens like "start" or "the," suggesting it might have an over-reliance on frequent tokens in the training data, potentially due to class imbalance.
+
+* **Improvement Needed in Decoding Strategy:** The model might benefit from improvements in the decoding strategy, such as beam search, to explore more meaningful word sequences and provide better answers.
+
+## BLEU & ROUGE Evaluation
+
+* **BLEU and ROUGE Scores:** The BLEU and ROUGE scores consistently show zero, indicating that the chatbot responses do not match the reference responses. 
+
+* **Repetitive Responses:** The chatbot outputs repetitive responses like "the" and "i," suggesting that the model may not be learning rich or diverse conversational patterns. This could be due to an imbalanced dataset, insufficient training, or issues with tokenization and vocabulary size.
+
 
 ## Future Considerations
 
