@@ -1,4 +1,4 @@
-# Generative Chatbot for Multi-Turn Conversations
+# Casual Conversation Chatbot (Chit-Chat BOT)
 
 This project is a part of the **Natural Language Processing and GenAI** (AAI-520) course in [the Applied Artificial Intelligence Master Program](https://onlinedegrees.sandiego.edu/masters-applied-artificial-intelligence/) at [the University of San Diego (USD)](https://www.sandiego.edu/). 
 
