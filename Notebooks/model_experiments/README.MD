@@ -5,7 +5,7 @@ I experimented with two models: **GPT-2** and **T5-small**. Each model was chose
 
 **Initial Attempts:**
 
-- **GPT-2** and **T5-small** from Hugging Face's Transformers library were the initial choices for their ability to handle complex conversational tasks. However, these models required significant computational power, which posed challenges on the available hardware.
+- **GPT-2** (medium as well) and **T5-small** from Hugging Face's Transformers library were the initial choices for their ability to handle complex conversational tasks. However, these models required significant computational power, which posed challenges on the available hardware.
 
 - To address these challenges, several techniques were used:
   - **PEFT LoRA (Parameter Efficient Fine-Tuning)**: Applied to fine-tune GPT-2 and T5-small with fewer parameters, reducing memory usage and making training more efficient.
