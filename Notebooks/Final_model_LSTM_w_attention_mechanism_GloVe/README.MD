@@ -155,17 +155,7 @@ Based on the human evaluation of the chit-chat bot, here are the key highlights:
 
 ## Future Considerations
 
-* **Adding an Attention Mechanism:** Incorporating an attention mechanism could significantly enhance the model’s ability to focus on relevant parts of the input sequence, especially for longer conversations. This would likely improve both the model’s performance and its ability to generate more contextually appropriate responses in tasks like chit-chat.
-
-* **Increasing the Number of Epochs:** If the model is still improving towards the end of training, consider extending the number of epochs. This could allow the model to learn more complex patterns, provided that early stopping continues to monitor for overfitting.
-
-* **Hyperparameter Tuning:** To optimize the model further, hyperparameter tuning can be done on the following:
-
-   * **Learning rate:** Experimenting with different learning rates can help the model converge more effectively.
-   * **Batch size:** Adjusting the batch size may improve model performance and training speed.
-   * **LSTM Units:** Tuning the number of LSTM units in each layer could help the model capture more nuanced features in the data.
-   * **Dropout Rate:** Fine-tuning the dropout rates may help improve generalization and prevent overfitting.
-   * **Using Pre-trained Embeddings:** Another improvement could be to use pre-trained word embeddings (like GloVe or Word2Vec) instead of training embeddings from scratch. This could provide the model with richer word representations and potentially improve its accuracy.
+* To improve the conversational quality of the chatbot, implementing beam search or nucleus sampling during inference can provide more diverse and higher-quality responses than greedy search. Additionally, incorporating diversity penalties will prevent the model from generating repetitive outputs in conversations. Incorporating previous dialogue history into the model will enhance its contextual understanding, allowing for more coherent and relevant answers. Hyperparameter tuning, including adjustments to the learning rate, LSTM units, and batch size, can further refine the model's performance.
 
 * **Expanding the Dataset:** If more data is available, training the model on a larger, more diverse dataset could improve its ability to generalize to unseen conversations.
 
