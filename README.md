@@ -13,11 +13,6 @@ This project involves developing a generative chatbot using **LSTM** to handle m
   - Responding coherently to a variety of topics.
   - Providing an interactive and accessible experience for users via a web interface.
 
-## Features
-- **Multi-Turn Conversational Capabilities**: The chatbot can manage and retain context through consecutive user interactions.
-- **Web Interface**: Built with **Streamlit** to provide an easy-to-use platform for chatting with the bot.
-- **Adaptability**: Future improvements planned for increasing coherence, latency optimization, and expanding the knowledge domain.
-
 ## Dataset
 The chatbot will be trained on the **[Cornell Movie Dialogues Corpus](https://www.kaggle.com/datasets/rajathmc/cornell-moviedialog-corpus)**, which contains:
 - **220,000 conversational exchanges** between **10,000+ movie characters**.
